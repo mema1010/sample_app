@@ -7,9 +7,9 @@ describe "Static pages" do
     it "should have the content 'Sample App' 
         and titel 'Home'
         and not the custom page title" do
-      visit '/static_pages/home'
+      visit root_path
       expect(page).to have_title("Sample App")
-      expect(page).to have_content('Sample App')
+      expect(page).to have_content('Willkommen')
       expect(page).not_to have_title('| Home')
     end
   end
@@ -18,7 +18,7 @@ describe "Static pages" do
 
     it "should have the content 'Help' 
         and titel 'help'" do
-      visit '/static_pages/help'
+      visit help_path
       expect(page).to have_title("Help")
       expect(page).to have_content('Help')
     end
@@ -28,7 +28,7 @@ describe "Static pages" do
 
     it "should have the content 'About Us' 
         and titel 'about'" do
-      visit '/static_pages/about'
+      visit about_path
       expect(page).to have_title("About")
       expect(page).to have_content('About Us')
     end
@@ -37,8 +37,9 @@ describe "Static pages" do
   describe "Contact page" do
     
     it "should have the content 'Contact' and titel 'about'" do
-      visit '/static_pages/contact'
-      expect(page).to have_title("Contact")
+      visit contact_path
+      expect(page).to have_content("Contact")
+      expect(page).to have_title("Ruby on Rails Tutorial Sample App | Contact")
     end
   end
 end
