@@ -2,44 +2,34 @@ require 'spec_helper'
 
 describe "Static pages" do
 
-  describe "Home page" do
+  subject { page }
 
-    it "should have the content 'Sample App' 
-        and titel 'Home'
-        and not the custom page title" do
-      visit root_path
-      expect(page).to have_title("Sample App")
-      expect(page).to have_content('Willkommen')
-      expect(page).not_to have_title('| Home')
-    end
+  describe "Home page" do
+    before { visit root_path }
+
+    it { should have_content('Willkommen') }
+    it { should have_title(full_title('')) }
+    it { should_not have_title('| Home') }
   end
 
   describe "Help page" do
+    before { visit help_path }
 
-    it "should have the content 'Help' 
-        and titel 'help'" do
-      visit help_path
-      expect(page).to have_title("Help")
-      expect(page).to have_content('Help')
-    end
+    it { should have_content('Help') }
+    it { should have_title(full_title('Help')) }
   end
 
   describe "About page" do
+    before { visit about_path }
 
-    it "should have the content 'About Us' 
-        and titel 'about'" do
-      visit about_path
-      expect(page).to have_title("About")
-      expect(page).to have_content('About Us')
-    end
+    it { should have_content('About') }
+    it { should have_title(full_title('About Us')) }
   end
-  
+
   describe "Contact page" do
-    
-    it "should have the content 'Contact' and titel 'about'" do
-      visit contact_path
-      expect(page).to have_content("Contact")
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App | Contact")
-    end
+    before { visit contact_path }
+
+    it { should have_content('Contact') }
+    it { should have_title(full_title('Contact')) }
   end
 end
